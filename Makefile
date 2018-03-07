@@ -14,7 +14,7 @@
 .PHONY: all clean deps fmt vet test docker
 
 EXECUTABLE ?= drone-firebase
-IMAGE ?= google/$(EXECUTABLE)
+IMAGE ?= fixate/$(EXECUTABLE)
 COMMIT ?= $(shell git rev-parse --short HEAD)
 
 LDFLAGS = -X "main.buildCommit=$(COMMIT)"
