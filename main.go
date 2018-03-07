@@ -53,6 +53,7 @@ func main() {
 			EnvVar: "DRONE_COMMIT_SHA",
 			Value:  "00000000",
 		},
+		cli.StringFlag{
 			Name:   "commit.ref",
 			Value:  "refs/heads/master",
 			Usage:  "git commit ref",
@@ -156,12 +157,12 @@ func run(c *cli.Context) error {
 			Created:  c.Int64("build.created"),
 		},
 		Config: Config{
-			Token:   c.String("token"),
-			ProjectID:   c.String("project-id"),
-			Message: c.String("message"),
-			Targets:  c.String("targets"),
-			DryRun:  c.String("dry-run"),
-			Debug:  c.String("debug"),
+			Token:     c.String("token"),
+			ProjectID: c.String("project-id"),
+			Message:   c.String("message"),
+			Targets:   c.String("targets"),
+			DryRun:    c.Bool("dry-run"),
+			Debug:     c.Bool("debug"),
 		},
 	}
 

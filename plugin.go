@@ -15,12 +15,11 @@ package main
 
 import (
 	"fmt"
-	"io"
 	"os"
 	"os/exec"
 	"strings"
 
-		"github.com/aymerick/raymond"
+	"github.com/aymerick/raymond"
 )
 
 type (
@@ -67,13 +66,6 @@ type (
 )
 
 func (p Plugin) Exec() error {
-	if err := p.doDeployment(); err != nil {
-		fmt.Printf("Firebase: Error in deployment: %s\n", err)
-		os.Exit(1)
-	}
-}
-
-func (p Plugin) doDeployment() error {
 	if p.Config.ProjectID != "" {
 		if err := p.useProject(); err != nil {
 			return err
@@ -114,8 +106,8 @@ func (p Plugin) useProject() error {
 	return p.runFirebaseCommand(args)
 }
 
-func render(template string, payload interface{})  (string, error) {
-	const str, err := raymond.Render(template, payload)
+func render(template string, payload interface{}) (string, error) {
+	str, err := raymond.Render(template, payload)
 	return strings.Trim(str, " \n"), err
 }
 
@@ -133,11 +125,16 @@ func (p Plugin) deploy() error {
 	}
 
 	if p.Config.Message != "" {
+		message, err := render(p.Config.Message, p)
+		if err != nil {
+			return err
+		}
+
 		args = append(args, "--message")
-		args = append(args, fmt.Sprintf("\"%s\"", render(p.Config.Message, p))
+		args = append(args, fmt.Sprintf("\"%s\"", message))
 	}
 
-	return p.runFirebaseCommand(args);
+	return p.runFirebaseCommand(args)
 }
 
 // execute sets the stdout and stderr of the command to be the default, traces

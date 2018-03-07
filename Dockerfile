@@ -13,13 +13,18 @@
 # limitations under the License.
 
 # Pull base image.
-FROM alpine:3.3
+FROM alpine:3.7
 
 # Upgrade and install dependencies.
 RUN apk add --no-cache nodejs
 
 # Install required firebase-tools NPM package.
-RUN npm install -g firebase-tools
+RUN apk add --no-cache --virtual .gyp \
+        python \
+        make \
+        g++ \
+		&& npm install -g firebase-tools --unsafe \
+    && apk del .gyp
 
 ADD drone-firebase /bin/
 
