@@ -142,9 +142,7 @@ func (p Plugin) deploy() error {
 func (p Plugin) execute(cmd *exec.Cmd) error {
 	cmd.Stderr = os.Stderr
 	cmd.Stdout = os.Stdout
-	if p.Config.DryRun || p.Config.Debug {
-		fmt.Println("$", strings.Join(cmd.Args, " "))
-	}
+	fmt.Println("$", strings.Join(cmd.Args, " "))
 	if p.Config.DryRun {
 		return nil
 	}

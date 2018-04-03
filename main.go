@@ -23,7 +23,7 @@ func main() {
 			EnvVar: "FIREBASE_TOKEN",
 		},
 		cli.StringFlag{
-			Name:   "project-id",
+			Name:   "project",
 			Usage:  "firebase project id",
 			EnvVar: "FIREBASE_PROJECT_ID",
 		},
@@ -38,7 +38,7 @@ func main() {
 			EnvVar: "PLUGIN_TARGETS,FIREBASE_TARGETS",
 		},
 		cli.StringFlag{
-			Name:   "dry-run",
+			Name:   "dryrun",
 			Usage:  "dry run",
 			EnvVar: "PLUGIN_DRY_RUN",
 		},
@@ -158,10 +158,10 @@ func run(c *cli.Context) error {
 		},
 		Config: Config{
 			Token:     c.String("token"),
-			ProjectID: c.String("project-id"),
+			ProjectID: c.String("project"),
 			Message:   c.String("message"),
 			Targets:   c.String("targets"),
-			DryRun:    c.Bool("dry-run"),
+			DryRun:    c.Bool("dryrun"),
 			Debug:     c.Bool("debug"),
 		},
 	}
