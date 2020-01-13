@@ -13,10 +13,11 @@
 # limitations under the License.
 
 # Pull base image.
-FROM alpine:3.7
+FROM alpine:3.8
 
 # Upgrade and install dependencies.
-RUN apk add --no-cache nodejs
+RUN apk add --update --no-cache nodejs npm
+
 
 # Install required firebase-tools NPM package.
 RUN apk add --no-cache --virtual .gyp \
