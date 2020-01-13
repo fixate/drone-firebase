@@ -23,7 +23,7 @@ RUN apk add --no-cache --virtual .gyp \
         python \
         make \
         g++ \
-		&& npm install -g firebase-tools --unsafe \
+		&& npm install -g firebase-tools@latest --unsafe \
     && apk del .gyp
 
 ADD drone-firebase /bin/
