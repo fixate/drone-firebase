@@ -17,115 +17,115 @@ func main() {
 	app.Action = run
 	app.Version = fmt.Sprintf("0.1.0+%s", build)
 	app.Flags = []cli.Flag{
-		cli.StringFlag{
+		&cli.StringFlag{
 			Name:   "token",
 			Usage:  "Firebase token",
-			EnvVar: "FIREBASE_TOKEN",
+      EnvVars: []string{"FIREBASE_TOKEN"},
 		},
-		cli.StringFlag{
+		&cli.StringFlag{
 			Name:   "project",
 			Usage:  "firebase project id",
-			EnvVar: "FIREBASE_PROJECT_ID",
+      EnvVars: []string{"FIREBASE_PROJECT_ID"},
 		},
-		cli.StringFlag{
+		&cli.StringFlag{
 			Name:   "message",
 			Usage:  "release message",
-			EnvVar: "PLUGIN_MESSAGE",
+      EnvVars: []string{"PLUGIN_MESSAGE"},
 		},
-		cli.StringFlag{
+		&cli.StringFlag{
 			Name:   "targets",
 			Usage:  "targets to deploy",
-			EnvVar: "PLUGIN_TARGETS,FIREBASE_TARGETS",
+      EnvVars: []string{"PLUGIN_TARGETS,FIREBASE_TARGETS"},
 		},
-		cli.StringFlag{
+		&cli.StringFlag{
 			Name:   "dryrun",
 			Usage:  "dry run",
-			EnvVar: "PLUGIN_DRY_RUN",
+      EnvVars: []string{"PLUGIN_DRY_RUN"},
 		},
-		cli.StringFlag{
+		&cli.StringFlag{
 			Name:   "debug",
 			Usage:  "debug",
-			EnvVar: "PLUGIN_DEBUG",
+      EnvVars: []string{"PLUGIN_DEBUG"},
 		},
-		cli.StringFlag{
+		&cli.StringFlag{
 			Name:   "commit.sha",
 			Usage:  "git commit sha",
-			EnvVar: "DRONE_COMMIT_SHA",
+      EnvVars: []string{"DRONE_COMMIT_SHA"},
 			Value:  "00000000",
 		},
-		cli.StringFlag{
+		&cli.StringFlag{
 			Name:   "commit.ref",
 			Value:  "refs/heads/master",
 			Usage:  "git commit ref",
-			EnvVar: "DRONE_COMMIT_REF",
+      EnvVars: []string{"DRONE_COMMIT_REF"},
 		},
-		cli.StringFlag{
+		&cli.StringFlag{
 			Name:   "commit.branch",
 			Value:  "master",
 			Usage:  "git commit branch",
-			EnvVar: "DRONE_COMMIT_BRANCH",
+      EnvVars: []string{"DRONE_COMMIT_BRANCH"},
 		},
-		cli.StringFlag{
+		&cli.StringFlag{
 			Name:   "commit.author",
 			Usage:  "git author name",
-			EnvVar: "DRONE_COMMIT_AUTHOR",
+      EnvVars: []string{"DRONE_COMMIT_AUTHOR"},
 		},
-		cli.StringFlag{
+		&cli.StringFlag{
 			Name:   "commit.pull",
 			Usage:  "git pull request",
-			EnvVar: "DRONE_PULL_REQUEST",
+      EnvVars: []string{"DRONE_PULL_REQUEST"},
 		},
-		cli.StringFlag{
+		&cli.StringFlag{
 			Name:   "commit.message",
 			Usage:  "commit message",
-			EnvVar: "DRONE_COMMIT_MESSAGE",
+      EnvVars: []string{"DRONE_COMMIT_MESSAGE"},
 		},
-		cli.StringFlag{
+		&cli.StringFlag{
 			Name:   "build.event",
 			Value:  "push",
 			Usage:  "build event",
-			EnvVar: "DRONE_BUILD_EVENT",
+      EnvVars: []string{"DRONE_BUILD_EVENT"},
 		},
-		cli.IntFlag{
+		&cli.IntFlag{
 			Name:   "build.number",
 			Usage:  "build number",
-			EnvVar: "DRONE_BUILD_NUMBER",
+      EnvVars: []string{"DRONE_BUILD_NUMBER"},
 		},
-		cli.StringFlag{
+		&cli.StringFlag{
 			Name:   "build.status",
 			Usage:  "build status",
 			Value:  "success",
-			EnvVar: "DRONE_BUILD_STATUS",
+      EnvVars: []string{"DRONE_BUILD_STATUS"},
 		},
-		cli.StringFlag{
+		&cli.StringFlag{
 			Name:   "build.link",
 			Usage:  "build link",
-			EnvVar: "DRONE_BUILD_LINK",
+      EnvVars: []string{"DRONE_BUILD_LINK"},
 		},
-		cli.Int64Flag{
+		&cli.Int64Flag{
 			Name:   "build.started",
 			Usage:  "build started",
-			EnvVar: "DRONE_BUILD_STARTED",
+      EnvVars: []string{"DRONE_BUILD_STARTED"},
 		},
-		cli.Int64Flag{
+		&cli.Int64Flag{
 			Name:   "build.created",
 			Usage:  "build created",
-			EnvVar: "DRONE_BUILD_CREATED",
+      EnvVars: []string{"DRONE_BUILD_CREATED"},
 		},
-		cli.StringFlag{
+		&cli.StringFlag{
 			Name:   "build.tag",
 			Usage:  "build tag",
-			EnvVar: "DRONE_TAG",
+      EnvVars: []string{"DRONE_TAG"},
 		},
-		cli.StringFlag{
+		&cli.StringFlag{
 			Name:   "build.deployTo",
 			Usage:  "environment deployed to",
-			EnvVar: "DRONE_DEPLOY_TO",
+      EnvVars: []string{"DRONE_DEPLOY_TO"},
 		},
-		cli.Int64Flag{
+		&cli.Int64Flag{
 			Name:   "job.started",
 			Usage:  "job started",
-			EnvVar: "DRONE_JOB_STARTED",
+      EnvVars: []string{"DRONE_JOB_STARTED"},
 		},
 	}
 
